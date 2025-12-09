@@ -7,8 +7,16 @@ extensions = {
     ".exe": "Executables",
     ".jpg": "Images",
     ".png": "Images",
+    ".webp": "Images",
+    ".svg": "Images",
     ".pdf": "Documents",
-    ".zip": "Archives"
+    ".docx": "Documents",
+    ".doc": "Documents",
+    ".zip": "Archives",
+    ".rar": "Archives",
+    ".7z": "Archives",
+    ".msi": "Executables",
+    ".mp4": "Videos"
 }
 
 for filename in os.listdir(base_dir):
@@ -16,6 +24,11 @@ for filename in os.listdir(base_dir):
 
     if file_extension in extensions:
         folder_name = extensions[file_extension]
+        source = os.path.join(base_dir, filename)
+        destination_folder = os.path.join(base_dir, folder_name)
+        os.makedirs(destination_folder, exist_ok=True)
+        shutil.move(source, destination_folder)
 
-        print(f"Found {filename} -> Needs to go to {folder_name}")
+
+        print(f"Processing: {filename}")
     
