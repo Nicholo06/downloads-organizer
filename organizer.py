@@ -21,6 +21,7 @@ extensions = {
 
 for filename in os.listdir(base_dir):
     file_name, file_extension = os.path.splitext(filename)
+    file_extension = file_extension.lower()
 
     if file_extension in extensions:
         folder_name = extensions[file_extension]
